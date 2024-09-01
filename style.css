@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: varela;
+  background: linear-gradient(to right, #491394, #591fa9, #6b2ec1, #8542e3);
+}
+
+@font-face {
+  font-family: "varela";
+  src: url("./assets/varela-round.ttf");
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button,
+input {
+  font-family: varela;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 0.6rem 0;
+  background: #24c4d3;
+}
+
+.header .header-title {
+  color: #fff;
+}
+
+/* TODO STYLES */
+.todo-container,
+.todo-container #edit-form-wrapper .todo-form {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+@media screen and (min-width: 700px) {
+  .todo-container,
+  .todo-container #edit-form-wrapper .todo-form {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .todo-container,
+  .todo-container #edit-form-wrapper .todo-form {
+    width: 55%;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .todo-container,
+  .todo-container #edit-form-wrapper .todo-form {
+    width: 35%;
+  }
+}
+
+.todo-container #add-form-wrapper {
+  margin-bottom: 2rem;
+}
+.todo-container .todo-form {
+  display: flex;
+}
+
+.todo-container .todo-form .form-input {
+  width: 100%;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0.6rem;
+  border-radius: 15px;
+  font-size: 1.4rem;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.todo-container .todo-form .form-input::placeholder {
+  color: #e7e7e7;
+  font-size: 1.3rem;
+}
+
+.todo-container .todo-form .form-input:focus {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.todo-container .todo-form .form-input:focus::placeholder {
+  color: #fff;
+}
+
+.todo-container .todo-form .form-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s;
+  padding: 0.6rem 1rem;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-left: 0.6rem;
+}
+
+.todo-container .todo-form .form-btn i {
+  pointer-events: none;
+}
+
+.todo-container .todo-form .form-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* EDIT FORM CONTAINER */
+.todo-container #edit-form-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: all 0.4s;
+  pointer-events: none;
+}
+
+/* add show-form class to form wrapper to show or hide it */
+.todo-container #edit-form-wrapper.show-form {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.todo-container #edit-form-wrapper #edit-form {
+  transform: translateY(100px);
+  transition: all 0.3s;
+}
+
+.todo-container #edit-form-wrapper.show-form #edit-form {
+  transform: translateY(0);
+}
+
+/* TODO ITEMS */
+
+.todo-container #todo-list .todo-item {
+  background: rgba(35, 8, 103, 0.632);
+  border: 1px solid #ffffff82;
+  color: #fff;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding-left: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.todo-container #todo-list .todo-item .todo-text {
+  flex: 1;
+  line-break: anywhere;
+  padding: 0.4rem 0;
+  align-self: center;
+}
+
+/* todo buttons */
+.todo-container #todo-list .todo-item .todo-btn {
+  color: #fff;
+  padding: 0.9rem;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.todo-container #todo-list .todo-item #edit-btn {
+  background: #27ad5ab9;
+}
+
+.todo-container #todo-list .todo-item #edit-btn:hover {
+  background: #1e924a;
+}
+
+.todo-container #todo-list .todo-item #delete-btn {
+  background: #d7403bce;
+}
+
+.todo-container #todo-list .todo-item #delete-btn:hover {
+  background: #b4322d;
+}
+
+/* ALERT TEXT */
+.todo-container .alert-text {
+  color: #fff;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+  height: 0;
+  overflow: hidden;
+}
+
+.todo-container .alert-text.show-alert-text {
+  height: 26px;
+}
+
+.todo-container .alert-text.alert-animation {
+  animation: alert-scale 1s ease;
+}
+
+@keyframes alert-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* FOOTER */
+footer {
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  margin-top: 10rem;
+}
